@@ -23,15 +23,16 @@ public class LoginServlet extends HttpServlet {
 	        PrintWriter out = response.getWriter();
 	        String username=request.getParameter("email");
 	        String password=request.getParameter("pass");
-	        try {
-		    	Class.forName("org.postgresql.Driver");
-				Connection connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/UserAccessManagement",
-			            "postgres", "Ram9059");
-				 String sql = "SELECT * FROM users WHERE username=? AND password=?";
-				   PreparedStatement st=connection.prepareStatement(sql);
-				   st.setString(1, username);
-				   st.setString(2, password);
-				   ResultSet rs = st.executeQuery();
+        try {
+        	String driver="org.postgresql.Driver";
+	    	Class.forName(driver);
+		Connection connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/UserAccessManagement",
+		            "postgres", "Ram9059");
+		 String sql = "SELECT * FROM users WHERE username=? AND password=?";
+			   PreparedStatement st=connection.prepareStatement(sql);
+		 st.setString(1, username);
+			   st.setString(2, password);
+			   ResultSet rs = st.executeQuery();
 				   if(rs.next()) {
 					   out.println("Authenticated"+rs.getString("username"));
 				   }

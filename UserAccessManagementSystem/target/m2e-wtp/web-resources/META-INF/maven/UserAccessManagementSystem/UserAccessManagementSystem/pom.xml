@@ -45,12 +45,14 @@
         <version>5.0.0</version> <!-- You can choose an appropriate version -->
         <scope>provided</scope>
     </dependency>
-    
     <dependency>
-    <groupId>org.postgresql</groupId>
-    <artifactId>postgresql</artifactId>
-    <version>42.6.0</version> <!-- Check for the latest version -->
-</dependency>
+         <groupId>org.postgresql</groupId>
+         <artifactId>postgresql</artifactId>
+         <version>42.7.4</version>
+  </dependency>
+    
+   
+
 
 
     <!-- Other dependencies -->
