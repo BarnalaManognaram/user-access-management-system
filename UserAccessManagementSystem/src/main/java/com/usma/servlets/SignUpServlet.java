@@ -7,7 +7,9 @@ import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.SQLException;
 
+import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServletRequest;
@@ -39,6 +41,14 @@ public class SignUpServlet extends HttpServlet {
 			   st.setString(3,"Employee");
 		       st.executeUpdate();
 		       out.println("Updated Successfully");
+		       response.sendRedirect("login.jsp");
+	        }
+	        catch(SQLException e) {
+	        	if("23505".equals(e.getSQLState())){
+	        		 request.setAttribute("errorSignupMessage", "User Already Exists Please Login");
+		                RequestDispatcher dispatcher = request.getRequestDispatcher("signup.jsp");
+		                dispatcher.forward(request, response);
+	        	}
 	        }
 	        catch(Exception e) {
 	        	out.println(e);

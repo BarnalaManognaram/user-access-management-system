@@ -19,7 +19,10 @@
      <input id="conPass" type="password" name="conPass" placeholder="Confirm Password"/>
      <input id="signUp" type="submit" value="SignUp"/>
       <div class="error_msg_con">
-      <p id="error_msg" style="color: red; display:none;">* Email field is required</p>
+      <p id="error_msg" style="color: red; display: <%-- Only show if errorMessage is present --%>
+      <%= request.getAttribute("errorSignupMessage") != null ? "block" : "none" %>;">
+        <%= request.getAttribute("errorSignupMessage") != null ? request.getAttribute("errorSignupMessage") : "" %>
+      </p>
       </div>
      <p>Already have an account? <a href="login.jsp" style="text-decoration: none;">Log In</a></p>
 </form>
