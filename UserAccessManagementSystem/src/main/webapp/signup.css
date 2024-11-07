@@ -1,0 +1,31 @@
+@charset "ISO-8859-1";
+#email,#pass,#conPass{
+	 border-radius: 5px;
+	  padding: 10px;
+    border: 1px solid #ccc;
+}
+#signUp{
+	 border-radius: 5px;
+	  padding: 10px;
+    border: 1px solid #ccc;
+}
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* Full viewport height */
+  margin: 0;
+  background-color: #f5f5f5;
+}
+form{
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+   gap: 15px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+  width: 300px;
+  text-align: center;
+}
