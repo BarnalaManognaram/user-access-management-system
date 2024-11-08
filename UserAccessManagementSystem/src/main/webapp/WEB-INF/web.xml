@@ -35,5 +35,14 @@
     <url-pattern>/SignUpServlet</url-pattern>
 </servlet-mapping>
 
+  <servlet>
+    <servlet-name>EmployeeAccessServlet</servlet-name>
+    <servlet-class>com.usma.servlets.EmployeeAccessServlet</servlet-class>
+</servlet>
+<servlet-mapping>
+    <servlet-name>EmployeeAccessServlet</servlet-name>
+    <url-pattern>/EmployeeAccessServlet</url-pattern>
+</servlet-mapping>
+
 
 </web-app>
