@@ -2,7 +2,17 @@
     pageEncoding="ISO-8859-1"%>
     <%@ page import="java.util.Map" %>
 <%@ page import="java.util.HashMap" %>
-    
+  <%
+    HttpSession sessions = request.getSession(false);
+    if (sessions == null){ 
+        response.sendRedirect("login.jsp");  // Redirect to login or error page if not an employee
+        return;
+    }
+    else if(!"Employee".equals(session.getAttribute("role"))){
+    	out.println("Access request is only for employees not for Admins and Managers");
+    			return;
+    }
+%>
 <!DOCTYPE html>
 <html>
 <head>

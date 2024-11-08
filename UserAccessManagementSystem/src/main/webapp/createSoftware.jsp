@@ -1,5 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+     <%
+    HttpSession sessions = request.getSession(false);
+    if (sessions == null){ 
+        response.sendRedirect("login.jsp");  // Redirect to login or error page if not an employee
+        return;
+    }
+    else if(!"Admin".equals(session.getAttribute("role"))){
+    	out.println("U dont have access to create softwares");
+    			return;
+    }
+%>
 <!DOCTYPE html>
 <html>
 <head>

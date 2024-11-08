@@ -14,6 +14,7 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 
 /**
  * Servlet implementation class ApprovalServlet
@@ -54,7 +55,9 @@ public class ApprovalServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/html");
         PrintWriter out = response.getWriter();
-
+        HttpSession session = request.getSession();
+        String role=(String)session.getAttribute("role");
+        if(role.equals("Manager")|| role.equals("Admin")) {
         try {
             String driver = "org.postgresql.Driver";
             Class.forName(driver);
@@ -115,6 +118,10 @@ public class ApprovalServlet extends HttpServlet {
             out.println("<p>Error retrieving data: " + e.getMessage() + "</p>");
         } finally {
             out.close();
+        }
+        }
+        else {
+        	out.println("U "+role+"s dont have access to this");
         }
     }
 
